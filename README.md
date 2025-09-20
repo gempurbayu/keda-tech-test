@@ -110,6 +110,17 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 - **Flexibility**: Konfigurasi yang fleksibel untuk berbagai file types
 - **Developer Experience**: Memberikan feedback yang cepat dan relevan
 
+### 10. **Vitest**
+**Alasan Pemilihan:**
+- **Fast**: Lebih cepat dari Jest dengan Vite integration
+- **Modern**: Built untuk modern JavaScript/TypeScript projects
+- **Zero Config**: Setup minimal dengan konfigurasi otomatis
+- **TypeScript Support**: Native TypeScript support tanpa setup tambahan
+- **Watch Mode**: Hot reload untuk testing yang efisien
+- **UI Mode**: Interface visual untuk testing dan debugging
+- **Coverage**: Built-in coverage reporting
+- **Compatibility**: Kompatibel dengan Jest API untuk migrasi mudah
+
 ## Arsitektur Aplikasi
 
 ### 1. **Modular Architecture**
@@ -210,9 +221,32 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 - **Staged Files Only**: Hanya file yang di-stage yang akan di-lint dan di-format
 
 ### 3. **Testing Strategy**
-- Unit tests untuk utility functions
-- Component tests untuk UI components
-- Integration tests untuk user flows
+- **Vitest** untuk unit testing dan integration testing
+- **Unit tests** untuk utility functions (27 test cases)
+- **Component tests** untuk UI components
+- **Integration tests** untuk user flows
+- **Coverage reporting** untuk monitoring test coverage
+
+#### **Test Commands**
+```bash
+# Menjalankan semua tests
+pnpm test:run
+
+# Watch mode untuk development
+pnpm test
+
+# UI mode untuk visual testing
+pnpm test:ui
+
+# Coverage report
+pnpm test:coverage
+```
+
+#### **Utility Functions Testing**
+- **sortDescending**: 8 test cases (Bubble Sort algorithm)
+- **maxSubarraySum**: 10 test cases (Sliding Window algorithm)  
+- **sumEvenNumbers**: 9 test cases (Recursive traversal)
+- **Total**: 27 test cases dengan 100% pass rate
 
 ## Deployment
 
