@@ -5,13 +5,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 First, run the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -80,6 +74,16 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 - **Class Merging**: Menggabungkan class Tailwind dengan benar
 - **Type Safety**: TypeScript support untuk class names
 - **Performance**: Optimized untuk production
+
+### 7. **Biome**
+**Alasan Pemilihan:**
+- **All-in-One Tool**: Menggabungkan linter, formatter, dan bundler dalam satu tool
+- **Performance**: Lebih cepat dari ESLint + Prettier kombinasi
+- **Zero Configuration**: Bekerja out-of-the-box dengan konfigurasi minimal
+- **TypeScript Support**: Native support untuk TypeScript dan JSX
+- **Modern Rules**: Aturan linting yang modern dan up-to-date
+- **Consistency**: Memastikan konsistensi kode di seluruh project
+- **Developer Experience**: Error messages yang jelas dan actionable
 
 ## Arsitektur Aplikasi
 
@@ -162,9 +166,15 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 - Automated testing
 
 ### 2. **Code Quality**
-- ESLint untuk code linting
-- Prettier untuk code formatting
-- TypeScript untuk type checking
+- **Biome** untuk linting dan formatting (menggantikan ESLint + Prettier)
+- **TypeScript** untuk type checking
+- **Custom Rules**: Konfigurasi khusus untuk mengabaikan aturan tertentu
+  - `noUnknownAtRules`: Mengabaikan at-rule Tailwind CSS
+  - `noArrayIndexKey`: Mengabaikan warning untuk array index sebagai key
+  - `useUniqueElementIds`: Mengabaikan warning untuk duplicate IDs
+  - `noUnusedImports`: Mengabaikan warning untuk unused imports
+  - `noStaticElementInteractions`: Mengabaikan warning untuk static element interactions
+  - `useKeyWithClickEvents`: Mengabaikan warning untuk click events tanpa keyboard support
 
 ### 3. **Testing Strategy**
 - Unit tests untuk utility functions
