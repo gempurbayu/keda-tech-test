@@ -85,6 +85,22 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 - **Consistency**: Memastikan konsistensi kode di seluruh project
 - **Developer Experience**: Error messages yang jelas dan actionable
 
+### 8. **Husky**
+**Alasan Pemilihan:**
+- **Git Hooks**: Memudahkan setup Git hooks untuk code quality
+- **Zero Configuration**: Setup yang mudah dan minimal
+- **Cross-platform**: Bekerja di Windows, macOS, dan Linux
+- **Team Consistency**: Memastikan semua developer menjalankan hooks yang sama
+- **Pre-commit**: Mencegah commit kode yang tidak sesuai standar
+
+### 9. **lint-staged**
+**Alasan Pemilihan:**
+- **Performance**: Hanya menjalankan linting pada file yang di-stage
+- **Efficiency**: Menghemat waktu dengan tidak menjalankan linting pada seluruh project
+- **Integration**: Terintegrasi dengan baik dengan Husky
+- **Flexibility**: Konfigurasi yang fleksibel untuk berbagai file types
+- **Developer Experience**: Memberikan feedback yang cepat dan relevan
+
 ## Arsitektur Aplikasi
 
 ### 1. **Modular Architecture**
@@ -168,6 +184,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 ### 2. **Code Quality**
 - **Biome** untuk linting dan formatting (menggantikan ESLint + Prettier)
 - **TypeScript** untuk type checking
+- **Husky** untuk Git hooks
+- **lint-staged** untuk pre-commit linting dan formatting
 - **Custom Rules**: Konfigurasi khusus untuk mengabaikan aturan tertentu
   - `noUnknownAtRules`: Mengabaikan at-rule Tailwind CSS
   - `noArrayIndexKey`: Mengabaikan warning untuk array index sebagai key
@@ -175,6 +193,12 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   - `noUnusedImports`: Mengabaikan warning untuk unused imports
   - `noStaticElementInteractions`: Mengabaikan warning untuk static element interactions
   - `useKeyWithClickEvents`: Mengabaikan warning untuk click events tanpa keyboard support
+
+#### **Pre-commit Hooks**
+- **Automatic Linting**: Setiap commit akan otomatis menjalankan Biome lint
+- **Automatic Formatting**: Setiap commit akan otomatis menjalankan Biome format
+- **File Types**: Mendukung `.js`, `.jsx`, `.ts`, `.tsx`, `.json`, `.md`, `.css`
+- **Staged Files Only**: Hanya file yang di-stage yang akan di-lint dan di-format
 
 ### 3. **Testing Strategy**
 - Unit tests untuk utility functions
